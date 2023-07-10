@@ -46,7 +46,6 @@ console.log('TES CUY');
    <View style={{padding:10,}}>
 <View style={{padding:10, backgroundColor:'white'}}>
 <Text style={{fontFamily:'Poppins-Regular'}}>Nama : <Text style={{fontFamily:'Poppins-SemiBold'}}>{data.nama}</Text></Text>
-<Text style={{fontFamily:'Poppins-Regular', marginTop:10}}>Tempat Tinggal : <Text style={{fontFamily:'Poppins-SemiBold'}}>{data.tempat}</Text></Text>
 <Text style={{fontFamily:'Poppins-Regular', marginTop:10}}>Tanggal Lahir : <Text style={{fontFamily:'Poppins-SemiBold'}}>{data.tanggallahir}</Text></Text>
 </View>
    </View>

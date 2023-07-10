@@ -32,6 +32,20 @@ console.log('TES CUY');
       .catch(error => console.log(error));
        
   };
+
+const handleInputChange = (value, fieldName) => {
+  if (fieldName === 'nik') {
+    if (/^\d+$/.test(value)) {
+      setForm({...form, nik: value});
+    } else {
+      setForm({...form, nik: ''});
+      Alert.alert(MYAPP, 'NIK hanya berisi nomor!');
+    }
+  } else {
+    setForm({...form, [fieldName]: value});
+  }
+}
+
 const handleKonseling = () => {
 if ((form.nik.length == 0) || (form.nama_sekolah.length == 0) || (form.nama_desa.length == 0)) {
    Alert.alert(MYAPP, 'NIK, Nama Sekolah Dan Nama Desa Belum Di Isi!');
@@ -100,7 +114,7 @@ if ((form.nik.length == 0) || (form.nama_sekolah.length == 0) || (form.nama_desa
 </View>
 
 <TextInput style={{backgroundColor:'#dedede', height:40, color:'black', fontFamily:'Poppins-Regular', fontSize:12, borderRadius:5, paddingRight:10, paddingLeft:10,}}
- placeholder='Masukan NIK' placeholderTextColor='gray' value={form.nik} onChangeText={value => setForm({...form,nik: value})} />
+ placeholder='Masukan NIK' placeholderTextColor='gray' value={form.nik} onChangeText={value => handleInputChange(value, 'nik')} />
 {/* END MASUKAN NIK */}
 
 {/* MASUKAN NAMA SEKOLAH */}

@@ -3,22 +3,25 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SliderBox } from 'react-native-image-slider-box';
 import { EdukasiRemaja, Inovasi, KonselingRemaja, Puskesmas } from '../../assets';
 import colors from '../../utils/colors';
-import { getData } from '../../utils/storedata';
+import { SliderURL, getData } from '../../utils/storedata';
 const HomeScreen = ({navigation}) => {
-    
-     const handleLinkPress = () => {
-        var Link1 = 'https://sipp.pa-tual.go.id/'
-        Linking.openURL(Link1)
-        .then((supported) => {
-            if (supported) {
-                return Linking.openURL(Link1);
-            } else {
-                console.log("Tautan Tidak Dapat Dibuka:"+ Link1)
+    const [refreshSlider, setRefreshSlider] = useState(false);
 
-            }
-        })
-        .catch((error) => console.log('Terjadi Kesalahan' + error));
-    };
+ const [sliderImages, setSliderImages] = useState([]);
+ useEffect(() => {
+    fetchSliderImages();
+  }, []);
+
+ const fetchSliderImages = () => {
+  fetch(`${SliderURL}?refresh=${refreshSlider}`)
+    .then((response) => response.json())
+    .then((data) => {
+      setSliderImages(data);
+    })
+    .catch((error) => {
+      console.log('Terjadi kesalahan dalam mengambil data slider:', error);
+    });
+};
 
   const [data, setData] = useState({});
 
@@ -49,10 +52,9 @@ console.log('TES CUY');
 <View style={{}}>
 <SliderBox 
 
-images={[
-    require('../../assets/img/slider1.png'),
-    require('../../assets/img/slider2.png'),
-]}
+images={sliderImages.map((slider) => ({
+          uri: slider.url, // Asumsikan ada properti "url" yang berisi URL gambar dari backend
+        }))}
  sliderBoxHeight={180}
             autoplay
             circleLoop

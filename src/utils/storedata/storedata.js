@@ -21,8 +21,9 @@ export const getData = async (key) => {
   }
 }
 
-export const RegisterURL = 'http://10.255.7.32/bestie/api/register';
-export const LoginURL = 'http://10.255.7.32/bestie/api/login';
-export const KonselingRemajaURL = 'http://10.255.7.32/bestie/api/konselingremaja';
-export const KonselingRemajaURLLOGIN = 'http://10.255.7.32/bestie/api/loginkonseling'
+export const RegisterURL = 'http://10.255.5.194/besti/api/register';
+export const LoginURL = 'http://10.255.5.194/besti/api/login';
+export const KonselingRemajaURL = 'http://10.255.5.194/besti/api/konselingremaja';
+export const KonselingRemajaURLLOGIN = 'http://10.255.5.194/besti/api/loginkonseling';
+export const SliderURL = 'http://10.255.5.194/besti/api/slider';
 export  const MYAPP = 'BESTI'; 
